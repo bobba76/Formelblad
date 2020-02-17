@@ -6,55 +6,11 @@ using System.Threading.Tasks;
 
 namespace Formelblad
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            ClassName className = new ClassName();
-
-            // Välj karaktär
-
-            // Karaktärer man kan välja på
-            string[] characters =
-            {
-                "Ninja",
-                "Magic"
-            };
-
-            // Skriv ut tillgängliga karaktärer
-            /* Skriver ut 
-             * 1. Ninja
-             * 2. Magic
-             */
-            for (int i = 0; i < characters.Length; i++)
-            {
-                Console.WriteLine("{0}. {1}", i + 1, characters[i]);
-            }
-
-            // Tvinga användaren välja en karaktär
-            string character = className.GetStringFromUser(characters, "Character", "Typ finns inte!");
-
-            if ("ninja" == character)
-            {
-                Character player = new Ninja();
-            }
-
-            else if ("magic" == character)
-            {
-                Character player = new Magic();
-            }
-
-            // Limited Range Int
-            Console.WriteLine("Skriver ett heltal mellan 2 - 257");
-            int answer = className.LimitedRangeInt("Nummer", "Skriv ett heltal!", "För lågt", "För högt", 2, 257);
-        }
-    }
-
-    public class ClassName
+    public class Metoder
     {
         // Olika komponenter
 
-        // Hur man skapar en Random variabel 
+        // Skapar en Random variabel 
         public void RandomMethod()
         {
             int min = 0;
@@ -67,6 +23,8 @@ namespace Formelblad
 
             // Ifall du vill göra det kort och dra mindre prestanda 
             int rndNumber1 = new Random().Next(min, max);
+
+            int rndNuber2 = new Random().Next(max);
         }
 
         // Låt användaren skriva in tills användaren skriver en siffra
@@ -96,19 +54,6 @@ namespace Formelblad
                 Console.WriteLine(message);
             }
         }
-
-        /*
-        public int ParseIntMethod(string answer)
-        {
-            while (true)
-            {
-                if (Int32.Parse, out int result))
-                    return result;
-
-                Console.WriteLine("Du måste skriva in ett heltal!");
-            }
-        }
-        */
 
         // Tvingar användaren att svara likadant som ett av alternativen
         public string GetStringFromUser(string[] alternatives, string text, string warning)
@@ -231,22 +176,5 @@ namespace Formelblad
                 }
             }
         }
-    }
-
-
-    // Arv
-    class Character
-    {
-        // Olika variabler och metoder för character
-    }
-
-    class Ninja : Character
-    {
-        // Olika variabler och metoder för Ninja
-    }
-
-    class Magic : Character
-    {
-        // Olika variabler och metoder för Character
     }
 }
