@@ -4,59 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Formelblad
+namespace Formula
 {
-    public class Metoder
+    /// <summary>
+    /// Common Methods that are used reguarly.
+    /// </summary>
+    public class CommonMethods
     {
-        // Olika komponenter
-
-        // Skapar en Random variabel 
-        public void RandomMethod()
-        {
-            int min = 0;
-            int max = 11;
-
-            Random rnd = new Random();
-
-            // Minimum 0 : Max 10
-            int rndNumber = rnd.Next(min, max);
-
-            // Ifall du vill göra det kort och dra mindre prestanda 
-            int rndNumber1 = new Random().Next(min, max);
-
-            int rndNuber2 = new Random().Next(max);
-        }
-
-        // Låt användaren skriva in tills användaren skriver en siffra
-        public void ParseInt()
-        {
-            int result;
-
-            while (true)
-            {
-                string answer = Console.ReadLine().Trim();
-
-                if (Int32.TryParse(answer, out result))
-                    break;
-
-                Console.WriteLine("Du måste skriva in ett heltal!");
-            }
-        }
-
-        // Kortare metod som tvingar användaren att skriva in ett heltal
-        public int ParseIntMethod(string message)
+        /// <summary>
+        /// Forces input to be an int.
+        /// </summary>
+        public int ParseInt(string errorMessage)
         {
             while (true)
             {
                 if (Int32.TryParse(Console.ReadLine().Trim(), out int result))
                     return result;
 
-                Console.WriteLine(message);
+                Console.WriteLine(errorMessage);
             }
         }
 
-        // Tvingar användaren att svara likadant som ett av alternativen
-        public string GetStringFromUser(string[] alternatives, string text, string warning)
+        /// <summary>
+        /// Forces input to be an int.
+        /// Message before input.
+        /// </summary>
+        public int ParseInt(string word, string errorMessage)
+        {
+            while (true)
+            {
+                Console.Write("{0}: ", word);
+
+                if (Int32.TryParse(Console.ReadLine().Trim(), out int result))
+                {
+                    return result;
+                }
+
+                Console.WriteLine(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Forces input to be equal to one of the alternatives.
+        /// </summary>
+        public string GetSpecificString(string[] alternatives, string text, string warning)
         {
             while (true)
             {
@@ -78,30 +69,34 @@ namespace Formelblad
             }
         }
 
-        // Tvingar användaren att svara likadant som ett av alternativen eller siffran framför
-        public string GetStringOrIntFromUser(string[] alternatives, string text, string warning)
+        /// <summary>
+        /// Forces input to be equal to one of the alternatives or number of placement in array + 1.
+        /// </summary>
+        public string GetSpecificStringOrInt(string[] alternatives, string text, string errorMessage)
         {
             while (true)
             {
-                // Låt användaren 
                 Console.Write("{0}: ", text);
 
-                // Användaren får skriva in en string
                 string answer = Console.ReadLine().Trim().ToLower();
 
-                // Retunera svaret om den liknar en ett av alternativen eller siffran framför
+                // Returns if the input is equal to an alternative/number of placement
                 for (int i = 0; i < alternatives.Length; i++)
                 {
-                    if (answer == alternatives[i].ToLower() || answer == (i + 1).ToString())
+                    if (answer == alternatives[i].ToLower())
                         return answer;
+
+                    else if (answer == (i + 1).ToString())
+                        return i.ToString();
                 }
 
-                // Ifall ordet inte matchade, skriv ut varför
-                Console.WriteLine(warning);
+                Console.WriteLine(errorMessage);
             }
         }
 
-        // Tvingar användaren att skriva in en string som är mellan minLength och maxLength längd
+        /// <summary>
+        /// Forces input with limited amount of letters.
+        /// </summary>
         public string LimitedRange(string toShortMessage, string toLongMessage, int minLength, int maxLength)
         {
             while (true)
@@ -125,12 +120,15 @@ namespace Formelblad
             }
         }
 
-        // Tvingar användaren att skriva in en string som är mellan minLength och maxLength längd (Extra message)
-        public string LimitedRange(string message, string toShortMessage, string toLongMessage, int minLength, int maxLength)
+        /// <summary>
+        /// Forces input with limited amount of letters.
+        /// Message before input.
+        /// </summary>
+        public string LimitedRange(string word, string toShortMessage, string toLongMessage, int minLength, int maxLength)
         {
             while (true)
             {
-                Console.Write("{0}: ", message);
+                Console.Write("{0}: ", word);
 
                 string answer = Console.ReadLine().Trim();
 
@@ -151,14 +149,16 @@ namespace Formelblad
             }
         }
 
-        // Tvingar användaren att skriva en int mellan minValue och maxValue
-        public int LimitedRangeInt(string message, string parseIntMessage, string toLow, string toHigh, int minValue, int maxValue)
+        /// <summary>        
+        /// Forces input that's withing max and minimum value.
+        /// </summary>
+        public int LimitedRange(string word, string parseIntMessage, string toLow, string toHigh, int minValue, int maxValue)
         {
             while (true)
             {
-                Console.Write("{0}: ", message);
+                Console.Write("{0}: ", word);
 
-                int answer = ParseIntMethod(parseIntMessage);
+                int answer = ParseInt(parseIntMessage);
 
                 if (answer < minValue)
                 {
