@@ -9,12 +9,12 @@ namespace Formula
     /// <summary>
     /// Common Methods that are used reguarly.
     /// </summary>
-    public class CommonMethods
+    public static class CommonMethods
     {
         /// <summary>
         /// Forces input to be an int.
         /// </summary>
-        public int ParseInt(string errorMessage)
+        public static int ParseInt(string errorMessage)
         {
             while (true)
             {
@@ -29,7 +29,7 @@ namespace Formula
         /// Forces input to be an int.
         /// Message before input.
         /// </summary>
-        public int ParseInt(string word, string errorMessage)
+        public static int ParseInt(string word, string errorMessage)
         {
             while (true)
             {
@@ -47,7 +47,7 @@ namespace Formula
         /// <summary>
         /// Forces input to be equal to one of the alternatives.
         /// </summary>
-        public string GetSpecificString(string[] alternatives, string text, string warning)
+        public static string GetSpecificString(string[] alternatives, string text, string warning)
         {
             while (true)
             {
@@ -72,7 +72,7 @@ namespace Formula
         /// <summary>
         /// Forces input to be equal to one of the alternatives or number of placement in array + 1.
         /// </summary>
-        public string GetSpecificStringOrInt(string[] alternatives, string text, string errorMessage)
+        public static string GetSpecificStringOrInt(string[] alternatives, string text, string errorMessage)
         {
             while (true)
             {
@@ -97,7 +97,7 @@ namespace Formula
         /// <summary>
         /// Forces input with limited amount of letters.
         /// </summary>
-        public string LimitedRange(string toShortMessage, string toLongMessage, int minLength, int maxLength)
+        public static string LimitedRange(string toShortMessage, string toLongMessage, int minLength, int maxLength)
         {
             while (true)
             {
@@ -124,7 +124,7 @@ namespace Formula
         /// Forces input with limited amount of letters.
         /// Message before input.
         /// </summary>
-        public string LimitedRange(string word, string toShortMessage, string toLongMessage, int minLength, int maxLength)
+        public static string LimitedRange(string word, string toShortMessage, string toLongMessage, int minLength, int maxLength)
         {
             while (true)
             {
@@ -152,7 +152,7 @@ namespace Formula
         /// <summary>        
         /// Forces input that's withing max and minimum value.
         /// </summary>
-        public int LimitedRange(string word, string parseIntMessage, string toLow, string toHigh, int minValue, int maxValue)
+        public static int LimitedRange(string word, string parseIntMessage, string toLow, string toHigh, int minValue, int maxValue)
         {
             while (true)
             {
