@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// Summary
+/// Add this file to the project-folder.
+/// Write "using Formula;" at the top of the file to access the namespace.
 namespace Formula
 {
     /// <summary>
-    /// Common Methods that are used reguarly.
+    /// Common methods that are used reguarly.
     /// </summary>
-    public static class CommonMethods
+    public static class Common
     {
         /// <summary>
         /// Forces input to be an int.
@@ -95,7 +98,7 @@ namespace Formula
         }
 
         /// <summary>
-        /// Forces input with limited amount of letters.
+        /// Forces input (string) with limited amount of letters.
         /// </summary>
         public static string LimitedRange(string toShortMessage, string toLongMessage, int minLength, int maxLength)
         {
@@ -121,7 +124,7 @@ namespace Formula
         }
 
         /// <summary>
-        /// Forces input with limited amount of letters.
+        /// Forces input (string) with limited amount of letters.
         /// Message before input.
         /// </summary>
         public static string LimitedRange(string word, string toShortMessage, string toLongMessage, int minLength, int maxLength)
@@ -150,7 +153,7 @@ namespace Formula
         }
 
         /// <summary>        
-        /// Forces input that's withing max and minimum value.
+        /// Forces input (int) that's withing max and minimum value.
         /// </summary>
         public static int LimitedRange(string word, string parseIntMessage, string toLow, string toHigh, int minValue, int maxValue)
         {
