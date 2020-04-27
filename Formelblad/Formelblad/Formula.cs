@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// Summary
-/// Add this file to the project-folder.
+/// Add this file to the project's folder.
 /// Write "using Formula;" at the top of the file to access the namespace.
 namespace Formula
 {
@@ -54,20 +54,16 @@ namespace Formula
         {
             while (true)
             {
-                // Låt användaren 
                 Console.Write("{0}: ", text);
 
-                // Användaren får skriva in en string
                 string answer = Console.ReadLine().Trim().ToLower();
 
-                // Retunera svaret om den liknar en ett av alternativen
                 for (int i = 0; i < alternatives.Length; i++)
                 {
                     if (answer == alternatives[i].ToLower())
                         return answer;
                 }
 
-                // Ifall ordet inte matchade, skriv ut varför
                 Console.WriteLine(warning);
             }
         }
@@ -83,14 +79,14 @@ namespace Formula
 
                 string answer = Console.ReadLine().Trim().ToLower();
 
-                // Returns if the input is equal to an alternative/number of placement
+                // Returns if the input is equal to an alternative or number of placement in array + 1
                 for (int i = 0; i < alternatives.Length; i++)
                 {
                     if (answer == alternatives[i].ToLower())
                         return answer;
 
                     else if (answer == (i + 1).ToString())
-                        return i.ToString();
+                        return (i + 1).ToString();
                 }
 
                 Console.WriteLine(errorMessage);
@@ -159,9 +155,7 @@ namespace Formula
         {
             while (true)
             {
-                Console.Write("{0}: ", word);
-
-                int answer = ParseInt(parseIntMessage);
+                int answer = ParseInt(word, parseIntMessage);
 
                 if (answer < minValue)
                 {
@@ -178,6 +172,31 @@ namespace Formula
                     return answer;
                 }
             }
+        }
+
+        /// <summary>
+        ///  Print a specific number of rows in the console.
+        /// </summary>
+        public static void Row(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        ///  Makes the first letter in a string to uppercase
+        /// </summary>
+        public static string FirstLetterToUpper(string str)
+        {
+            if (str == null)
+                return null;
+
+            if (str.Length > 1)
+                return char.ToUpper(str[0]) + str.Substring(1);
+
+            return str.ToUpper();
         }
     }
 }
