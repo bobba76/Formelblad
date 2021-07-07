@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Formula
 {
     /// <summary>
-    /// Common methods that are used reguarly.
+    /// Common methods that are used regularly.
     /// </summary>
     public static class Common
     {
