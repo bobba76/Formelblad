@@ -50,7 +50,7 @@ namespace Formula
         /// <summary>
         /// Forces input to be equal to one of the alternatives.
         /// </summary>
-        public static string GetSpecificString(string[] alternatives, string text, string warning)
+        public static string GetSpecificString(string[] alternatives, string text, string errorMessage)
         {
             while (true)
             {
@@ -64,7 +64,7 @@ namespace Formula
                         return answer;
                 }
 
-                Console.WriteLine(warning);
+                Console.WriteLine(errorMessage);
             }
         }
 
